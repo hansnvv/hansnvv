@@ -1,8 +1,12 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=gradient&customColorList=12,20,24&height=150&text=Hans&fontSize=60&fontColor=f0ebe3&desc=doing%20stuff.%20mostly%20nothing.&descColor=a0a0a0&descSize=14&descAlignY=75"/>
+<br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=a0a0a0&center=true&vCenter=true&width=500&lines=nothing+special+going+on+here.;just+existing%2C+committing%2C+and+pushing.;maybe+leaving+something+behind.+maybe+not." alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Oswald&size=55&pause=9999999&color=f0ebe3&center=true&vCenter=true&repeat=false&width=500&height=100&lines=Yo%2C+Im+Hans" />
+
+<img src="https://readme-typing-svg.demolab.com?font=Oswald&size=20&pause=1000&color=a0a0a0&center=true&vCenter=true&width=500&lines=doing+stuff.+mostly+nothing.;nothing+special+going+on+here.;just+existing%2C+committing%2C+and+pushing.;maybe+leaving+something+behind.+maybe+not." alt="Typing SVG" />
+
+<br/>
 
 <a href="https://www.instagram.com/99eiqr?igsh=eGQ1YWRkY3EzMThz"><img src="https://img.shields.io/badge/instagram-3a3a3a?style=for-the-badge&logo=instagram&logoColor=f0ebe3"/></a>
 &nbsp;
