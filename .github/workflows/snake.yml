@@ -2,7 +2,7 @@ name: Generate Snake
 
 on:
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,10 +13,48 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-contribution-grid-snake.svg?color_snake=6e1a1a&color_dots=#d0d0d0,#b0b0b0,#888888,#555555,#222222
-            dist/github-contribution-grid-snake-dark.svg?color_snake=6e1a1a&color_dots=#2a2a2a,#4a4a4a,#7a7a7a,#aaaaaa,#f0ebe3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            dist/github-contribution-grid-snake.svg?palette=github
+
+      - name: Apply adaptive dark/light theme colors
+        run: |
+          python3 - << 'EOF'
+          import re
+
+          with open('dist/github-contribution-grid-snake.svg', 'r') as f:
+              content = f.read()
+
+          new_style = (
+              ':root{'
+              '--cb:#1b1f230a;'
+              '--cs:#58a6ff;'
+              '--ce:#ebedf0;'
+              '--c0:#ebedf0;'
+              '--c1:#9be9a8;'
+              '--c2:#40c463;'
+              '--c3:#30a14e;'
+              '--c4:#216e39'
+              '}'
+              '@media (prefers-color-scheme:dark){'
+              ':root{'
+              '--cb:#ffffff0a;'
+              '--cs:#58a6ff;'
+              '--ce:#161b22;'
+              '--c0:#161b22;'
+              '--c1:#0e4429;'
+              '--c2:#006d32;'
+              '--c3:#26a641;'
+              '--c4:#39d353'
+              '}'
+              '}'
+          )
+
+          content = re.sub(r':root\{[^}]+\}', new_style, content, count=1)
+
+          with open('dist/github-contribution-grid-snake.svg', 'w') as f:
+              f.write(content)
+
+          print("Colors applied successfully!")
+          EOF
 
       - uses: crazy-max/ghaction-github-pages@v3
         with:
