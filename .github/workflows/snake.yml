@@ -16,46 +16,31 @@ jobs:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-contribution-grid-snake.svg?palette=github
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      - name: Apply adaptive dark/light theme colors
+      - name: Apply adaptive colors
         run: |
           python3 - << 'EOF'
-          import re
+          import re, os
 
-          with open('dist/github-contribution-grid-snake.svg', 'r') as f:
-              content = f.read()
+          light_style = ':root{--cb:#1b1f230a;--cs:#58a6ff;--ce:#ebedf0;--c0:#ebedf0;--c1:#9be9a8;--c2:#40c463;--c3:#30a14e;--c4:#216e39}'
+          dark_style  = ':root{--cb:#ffffff0a;--cs:#58a6ff;--ce:#161b22;--c0:#161b22;--c1:#0e4429;--c2:#006d32;--c3:#26a641;--c4:#39d353}'
 
-          new_style = (
-              ':root{'
-              '--cb:#1b1f230a;'
-              '--cs:#58a6ff;'
-              '--ce:#ebedf0;'
-              '--c0:#ebedf0;'
-              '--c1:#9be9a8;'
-              '--c2:#40c463;'
-              '--c3:#30a14e;'
-              '--c4:#216e39'
-              '}'
-              '@media (prefers-color-scheme:dark){'
-              ':root{'
-              '--cb:#ffffff0a;'
-              '--cs:#58a6ff;'
-              '--ce:#161b22;'
-              '--c0:#161b22;'
-              '--c1:#0e4429;'
-              '--c2:#006d32;'
-              '--c3:#26a641;'
-              '--c4:#39d353'
-              '}'
-              '}'
-          )
+          files = {
+              'dist/github-contribution-grid-snake.svg': light_style,
+              'dist/github-contribution-grid-snake-dark.svg': dark_style,
+          }
 
-          content = re.sub(r':root\{[^}]+\}', new_style, content, count=1)
-
-          import os
           os.makedirs('output', exist_ok=True)
-          with open('output/github-contribution-grid-snake.svg', 'w') as f:
-              f.write(content)
+          for path, style in files.items():
+              with open(path, 'r') as f:
+                  content = f.read()
+              content = re.sub(r':root\{[^}]+\}', style, content, count=1)
+              out = path.replace('dist/', 'output/')
+              with open(out, 'w') as f:
+                  f.write(content)
+
+          print("Done!")
           EOF
 
       - uses: crazy-max/ghaction-github-pages@v3
