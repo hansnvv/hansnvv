@@ -11,13 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: Platane/snk@v3
+      - uses: Platane/snk/action@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-contribution-grid-snake.svg?palette=github&animate=true
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark&animate=true
-            
+
       - name: Apply adaptive colors
         run: |
           python3 - << 'EOF'
