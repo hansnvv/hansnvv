@@ -19,7 +19,6 @@ jobs:
 
       - name: Apply adaptive dark/light theme colors
         run: |
-          chmod 644 dist/github-contribution-grid-snake.svg
           python3 - << 'EOF'
           import re
 
@@ -53,11 +52,10 @@ jobs:
 
           content = re.sub(r':root\{[^}]+\}', new_style, content, count=1)
 
-          with open('dist/github-contribution-grid-snake.svg', 'w') as f:
+          with open('dist/github-contribution-grid-snake-new.svg', 'w') as f:
               f.write(content)
-
-          print("Colors applied successfully!")
           EOF
+          cp -f dist/github-contribution-grid-snake-new.svg dist/github-contribution-grid-snake.svg
 
       - uses: crazy-max/ghaction-github-pages@v3
         with:
