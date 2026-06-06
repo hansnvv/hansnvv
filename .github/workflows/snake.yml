@@ -52,14 +52,15 @@ jobs:
 
           content = re.sub(r':root\{[^}]+\}', new_style, content, count=1)
 
-          with open('/tmp/snake.svg', 'w') as f:
+          import os
+          os.makedirs('output', exist_ok=True)
+          with open('output/github-contribution-grid-snake.svg', 'w') as f:
               f.write(content)
           EOF
-          cp -f /tmp/snake.svg dist/github-contribution-grid-snake.svg
 
       - uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: output
-          build_dir: dist
+          build_dir: output
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
