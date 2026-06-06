@@ -21,9 +21,9 @@ the most boring guy you'll ever meet · unemployed · just trying to leave a mar
 <br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hansnvv/.github/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/hansnvv/.github/output/github-contribution-grid-snake.svg" />
-  <img alt="snake" src="https://raw.githubusercontent.com/hansnvv/.github/output/github-contribution-grid-snake.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hansnvv/hansnvv/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/hansnvv/hansnvv/output/github-contribution-grid-snake.svg" />
+  <img alt="snake" src="https://raw.githubusercontent.com/hansnvv/hansnvv/output/github-contribution-grid-snake.svg" />
 </picture>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3a3a3a&height=120&section=footer"/>
